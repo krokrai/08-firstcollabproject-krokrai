@@ -21,14 +21,14 @@ MonoBehaviour:
       m_Hash: 854338608
       m_Sprite: {fileID: 21300000, guid: 75817ed5c022ddf479e86630dfb69087, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 21300000, guid: 2bc746408f1e47343a76c797122a0ad1, type: 3}
+      m_SpriteOverride: {fileID: 21300000, guid: 4304a9e146995ad42aac40a413661bb1, type: 3}
     - m_Name: Stand
       m_Hash: 628635570
       m_Sprite: {fileID: 21300000, guid: 9952485406388ab489260064a42e89e0, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 21300000, guid: 7ac5419b459f4c7469753513154a0db5, type: 3}
+      m_SpriteOverride: {fileID: 21300000, guid: 2ade9605f1d92dc43a5dd75ca1e3dd10, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 2
   m_PrimaryLibraryGUID: 97763cde6fcd4e1459f7e5ef8d82e0f3
-  m_ModificationHash: 639110710906846570
+  m_ModificationHash: 639118828797041670
   m_Version: 1

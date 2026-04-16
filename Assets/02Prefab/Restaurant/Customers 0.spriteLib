@@ -17,18 +17,18 @@ MonoBehaviour:
     m_Hash: 142429503
     m_CategoryList: []
     m_OverrideEntries:
-    - m_Name: Stand
-      m_Hash: 628635570
-      m_Sprite: {fileID: 21300000, guid: 9952485406388ab489260064a42e89e0, type: 3}
-      m_FromMain: 1
-      m_SpriteOverride: {fileID: 21300000, guid: 9952485406388ab489260064a42e89e0, type: 3}
     - m_Name: Sit
       m_Hash: 854338608
       m_Sprite: {fileID: 21300000, guid: 75817ed5c022ddf479e86630dfb69087, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 21300000, guid: 75817ed5c022ddf479e86630dfb69087, type: 3}
+      m_SpriteOverride: {fileID: 21300000, guid: 8f4e49143b23d0b43a1cf1110891fee3, type: 3}
+    - m_Name: Stand
+      m_Hash: 628635570
+      m_Sprite: {fileID: 21300000, guid: 9952485406388ab489260064a42e89e0, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 21300000, guid: f83c5ec9f746ad442aeccb70827c426d, type: 3}
     m_FromMain: 1
-    m_EntryOverrideCount: 0
+    m_EntryOverrideCount: 2
   m_PrimaryLibraryGUID: 97763cde6fcd4e1459f7e5ef8d82e0f3
-  m_ModificationHash: 639110708440026925
+  m_ModificationHash: 639118828074315830
   m_Version: 1

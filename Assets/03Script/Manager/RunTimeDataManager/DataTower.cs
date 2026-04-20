@@ -110,55 +110,6 @@ public class DataTower : MonoBehaviour
     #endregion
 
     public FisherDatas fihserDatas;
-
-    #region 구형변수
-    /// <summary>
-    /// 현재까지 잡은 총 물고기 수
-    /// </summary>
-    public ulong catchFishs;
-
-    /// <summary>
-    /// 희귀도가 쓰레기인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishTrash;
-
-    /// <summary>
-    /// 희귀도가 일반인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishNormal;
-
-    /// <summary>
-    /// 희귀도가 우수인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishFine;
-
-    /// <summary>
-    /// 희귀도가 고급인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishSuperior;
-
-    /// <summary>
-    /// 희귀도가 희귀인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishRare;
-
-    /// <summary>
-    /// 희귀도가 명품인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishElite;
-
-    /// <summary>
-    /// 희귀도가 환상인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishFantastic;
-
-    /// <summary>
-    /// 희귀도가 전설인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishLegendary;
-
-    #endregion
-
     public CatchFishs catchedFishs;
 
     /// <summary>
@@ -257,7 +208,7 @@ public class DataTower : MonoBehaviour
     {
         while (!_dataCon.isDataLoaded)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
         }
 
         if (_dataCon.objs[0] is not FishData)
@@ -295,22 +246,6 @@ public class DataTower : MonoBehaviour
         OnLanguageSettingChanged?.Invoke(languageSetting);
     }
 
-    // 돈
-    // 인벤토리, 생선
-    // 도감????
-    // 손님 방문 횟수. 잠수 중 지나간 손님 수
-    // 업그레이드, 어떤 걸 얼만큼 업그레이드 되어 있는 지.
-    // 초밥 수
-    // 언어 등 개인 설정
-    // 미끼 갯수
-    // 타이머
-
-
-
-    #region 식당 관련 함수들
-
-    #endregion
-
     #region 낚시 관련 함수들
     // 아마 So로 넘어올거 같다.
     /// <summary>
@@ -328,37 +263,36 @@ public class DataTower : MonoBehaviour
         }
         CatchFishCounter(in fish);
     }
-    #endregion
-
 
     void CatchFishCounter(in FishData fish)
     {
         switch (fish.fishRarity)
         {
             case EFish_Rarity.Trash:
-                catchFishTrash++;
+                catchedFishs.catchFishTrash++;
                 break;
             case EFish_Rarity.Normal:
-                catchFishNormal++;
+                catchedFishs.catchFishNormal++;
                 break;
             case EFish_Rarity.Fine:
-                catchFishFine++;
+                catchedFishs.catchFishFine++;
                 break;
             case EFish_Rarity.Superior:
-                catchFishSuperior++;
+                catchedFishs.catchFishSuperior++;
                 break;
             case EFish_Rarity.Rare:
-                catchFishRare++;
+                catchedFishs.catchFishRare++;
                 break;
             case EFish_Rarity.Elite:
-                catchFishElite++;
+                catchedFishs.catchFishElite++;
                 break;
             case EFish_Rarity.Fantastic:
-                catchFishFantastic++;
+                catchedFishs.catchFishFantastic++;
                 break;
             case EFish_Rarity.Legendary:
-                catchFishLegendary++;
+                catchedFishs.catchFishLegendary++;
                 break;
         }
     }
+    #endregion
 }

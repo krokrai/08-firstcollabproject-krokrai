@@ -20,6 +20,12 @@ public class DataContainer : ScriptableObject
     /// </summary>
     public bool isDataLoaded { get; private set; } = false;
 
+    [ContextMenu("SetOrigin")]
+    void SetTest()
+    {
+        isDataLoaded = false;
+    }
+
     private void Awake()
     {
         isDataLoaded = false;

@@ -1889,16 +1889,19 @@ MonoBehaviour:
   UnlockGramophoneLevel: 0
   UnlockCatObjectLevel: 0
   UnlockMenuLevel: 0
-  masterVolume: 0
-  BGMVolume: 0
-  SFXVolume: 0
-  transparentLevel: 0
   fishingGrade: 0
   baitLevel: 0
   rodLevel: 0
   shipLevel: 0
   fishingCount: 0
   currentFishingCount: 0
+  fihserDatas:
+    fishingGrade: 0
+    baitLevel: 0
+    rodLevel: 0
+    shipLevel: 0
+    fishingCount: 0
+    currentFishingCount: 0
   catchFishs: 0
   catchFishTrash: 0
   catchFishNormal: 0
@@ -1908,6 +1911,16 @@ MonoBehaviour:
   catchFishElite: 0
   catchFishFantastic: 0
   catchFishLegendary: 0
+  catchedFishs:
+    catchFishs: 0
+    catchFishTrash: 0
+    catchFishNormal: 0
+    catchFishFine: 0
+    catchFishSuperior: 0
+    catchFishRare: 0
+    catchFishElite: 0
+    catchFishFantastic: 0
+    catchFishLegendary: 0
   fishingTime: 0
   maxFishingTime: 0
   isDataInitiated: 0

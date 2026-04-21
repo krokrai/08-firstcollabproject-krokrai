@@ -21,15 +21,7 @@ public class UnlockedPopup : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(Waiter());
         _datas = new TranslationData[3];
-    }
-
-    IEnumerator Waiter()
-    {
-        yield return new WaitForSecondsRealtime(0.2f);
-        gameObject.SetActive(false);
-        yield break;
     }
 
     public void PopUp(RecipeContainer recipe)

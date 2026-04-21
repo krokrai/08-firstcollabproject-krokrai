@@ -1875,12 +1875,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataTower
   _dataCon: {fileID: 11400000, guid: 4f7a9ee9d18a7b5469199816a8344e35, type: 2}
-  fishingGrade: 0
-  baitLevel: 0
-  rodLevel: 0
-  shipLevel: 0
-  fishingCount: 0
-  currentFishingCount: 0
   fihserDatas:
     fishingGrade: 0
     baitLevel: 0
@@ -6517,7 +6511,7 @@ CanvasGroup:
   m_GameObject: {fileID: 451878222}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 1
+  m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &460261539
@@ -20786,8 +20780,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4278255873
+  m_fontColor: {r: 0.003921569, g: 0.003921569, b: 0.003921569, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -21734,6 +21728,14 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetSfxVolume
       objectReference: {fileID: 0}
+    - target: {fileID: 2043438637997152314, guid: e0fc23897a4efb4488fcc70f27b377a5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059766173424286155, guid: e0fc23897a4efb4488fcc70f27b377a5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2346218117836689209, guid: e0fc23897a4efb4488fcc70f27b377a5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -21850,6 +21852,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetBgmVolume
       objectReference: {fileID: 0}
+    - target: {fileID: 3541244853989558844, guid: e0fc23897a4efb4488fcc70f27b377a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6dcc3b5bff84e5a42891a12cf911a7f8, type: 3}
     - target: {fileID: 3806068472737617384, guid: e0fc23897a4efb4488fcc70f27b377a5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -21878,6 +21884,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4229624221822641559, guid: e0fc23897a4efb4488fcc70f27b377a5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4936582753738521569, guid: e0fc23897a4efb4488fcc70f27b377a5, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
@@ -21894,6 +21904,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5224999385918158241, guid: e0fc23897a4efb4488fcc70f27b377a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6dcc3b5bff84e5a42891a12cf911a7f8, type: 3}
     - target: {fileID: 5283897886277107516, guid: e0fc23897a4efb4488fcc70f27b377a5, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -21925,6 +21939,10 @@ PrefabInstance:
     - target: {fileID: 5920008528673428331, guid: e0fc23897a4efb4488fcc70f27b377a5, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512906148199302421, guid: e0fc23897a4efb4488fcc70f27b377a5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7319141367994242166, guid: e0fc23897a4efb4488fcc70f27b377a5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -29031,7 +29049,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1814005094
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29239,7 +29257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1831220021
 MonoBehaviour:
   m_ObjectHideFlags: 0

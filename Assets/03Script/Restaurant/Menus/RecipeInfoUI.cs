@@ -119,10 +119,12 @@ public class RecipeInfoUI : MonoBehaviour
         if (_currentHasFish < 1)
         {
             _tmpUGUI[5].text = $"<color=red>{_currentHasFish} / 1</color>";
+            _btn.interactable = false;
         }
         else
         {
             _tmpUGUI[5].text = $"{_currentHasFish} / 1";
+            _btn.interactable = true;
         }
 
         switch (lng)

@@ -8,22 +8,12 @@ public class GaugeSetter : MonoBehaviour
     [SerializeField] Image _fillImage;
     [SerializeField] TextMeshProUGUI _tmp;
 
-    Color _gaugeBlueColor;
-    Color _gaugeRedColor;
+    Color _gaugeBlueColor = new Color(153 / 255f, 172 / 255f, 1);
+    Color _gaugeRedColor = new Color(1, 97 / 255f, 80 / 255f, 1);
 
-    Color _normalCustomerTextColor;
-    Color _specialCustomerTextColor;
-    Color _vipCustomerTextColor;
-
-    private void Awake()
-    {
-        _gaugeBlueColor = new Color(153 / 255f,172 / 255f, 1);
-        _gaugeRedColor = new Color(1, 97 / 255f, 80 / 255f);
-
-        _normalCustomerTextColor = Color.black;
-        _specialCustomerTextColor = new Color(1,189 / 255f, 89 / 255f);
-        _vipCustomerTextColor = new Color(31 / 255f, 1, 147 / 255f);
-    }
+    Color _normalCustomerTextColor = new Color(0.004f, 0.004f, 0.004f, 1f);
+    Color _specialCustomerTextColor = new Color(1, 189 / 255f, 89 / 255f, 1);
+    Color _vipCustomerTextColor = new Color(31 / 255f, 1, 147 / 255f, 1);
 
     /// <summary>
     /// 손님의 등급에 따라 표시되는 글자의 색을 바꿔줌.
@@ -36,8 +26,12 @@ public class GaugeSetter : MonoBehaviour
         switch (grade)
         {
             case CustomerGrade.NORMAL:
+                Debug.Log(_tmp.color);
                 _tmp.text = "Normal";
+                Debug.Log(_tmp.color);
+                Debug.Log(_normalCustomerTextColor);
                 _tmp.color = _normalCustomerTextColor;
+                Debug.Log(_tmp.color);
                 break;
             case CustomerGrade.SPECIAL:
                 _tmp.text = "Special";
@@ -48,6 +42,7 @@ public class GaugeSetter : MonoBehaviour
                 _tmp.color = _vipCustomerTextColor;
                 break;
         }
+        Debug.Log(_tmp.color);
     }
 
     /// <summary>
@@ -57,7 +52,7 @@ public class GaugeSetter : MonoBehaviour
     /// <param name="isEatDuration">식사 중이면 true</param>
     public void SetState(bool isEatDuration, bool isVisible)
     {
-        Debug.Log("게이지 시작");
+        Debug.Log($"게이지 시작 : {isVisible}");
         gameObject.SetActive(isVisible);
         _fillImage.color = isEatDuration ? _gaugeRedColor : _gaugeBlueColor;
     }

@@ -66,7 +66,6 @@ public class RestaurantManager : MonoBehaviour
             _gaugeSetter[i].GaugeOff();
         }
     }
-
     private void OnEnable()
     {
         _menuCtrl.OnDish += HaveDish;
@@ -78,7 +77,6 @@ public class RestaurantManager : MonoBehaviour
         _menuCtrl.OnDish += HaveDish;
         _openMenu.OnChangeSceneToRestaurant -= OnVisual;
     }
-
     public void OnVisual(bool b)
     {
         _canVisual = b;
@@ -127,10 +125,12 @@ public class RestaurantManager : MonoBehaviour
 
     IEnumerator Waiter()
     {
-        while (_container.isDataLoaded)
+        while (!_container.isDataLoaded)
         {
             yield return null;
         }
+
+        Debug.Log($"{_customerData[0].name} / {_customerData[0].weight}");
 
         for (byte i = 0; i < _customerData.Length; i++)
         {
@@ -168,7 +168,6 @@ public class RestaurantManager : MonoBehaviour
         // 설거지? 시간 => 대기시간 => 스폰
         while (true)
         {
-            
             if (!_haveDish)
             {
                 yield return null;
@@ -181,8 +180,8 @@ public class RestaurantManager : MonoBehaviour
             if (_emptySeat != null)
             {
                 // 스폰 대기 시간.
-                yield return new WaitForSeconds(UnityEngine.Random.Range(_fixedValue.minSpawnDelay, _fixedValue.maxSpawnDelay + 1));
-
+                //yield return new WaitForSeconds(UnityEngine.Random.Range(_fixedValue.minSpawnDelay, _fixedValue.maxSpawnDelay + 1));
+                yield return new WaitForSeconds(5);
                 // 손님 성향 및 이미지 랜덤 생성
                 GetRandomCustomerPrefab();
 

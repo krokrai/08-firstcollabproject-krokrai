@@ -376,7 +376,7 @@ public class UpgradeSelectPresenter : MonoBehaviour
     // 낚시 등급
     private void SetViewPlayerGrade()
     {
-        int level = DataTower.instance.fishingGrade;
+        int level = DataTower.instance.fihserDatas.fishingGrade;
         int maxLevel = _fDataReader.Grades.Length;
         _fUpgrade.CheckEnoughGoldFishingGradeUpgrade(DataTower.instance.money);
         _fDataReader.GetFishingGradeReqGoldData(level, out int reqGold);
@@ -411,10 +411,10 @@ public class UpgradeSelectPresenter : MonoBehaviour
     // 미끼 레벨
     private void SetViewBaitLevel()
     {
-        int level = DataTower.instance.baitLevel;
+        int level = DataTower.instance.fihserDatas.baitLevel;
         int maxLevel = _fDataReader.Baits.Length;
         _fUpgrade.CheckEnoughGoldBaitLevelUpgrade(DataTower.instance.money);
-        _fUpgrade.CheckCanBaitLevelUpgrade(DataTower.instance.fishingGrade, DataTower.instance.baitLevel);
+        _fUpgrade.CheckCanBaitLevelUpgrade(DataTower.instance.fihserDatas.fishingGrade, DataTower.instance.fihserDatas.baitLevel);
         _fDataReader.GetBaitLevelReqGoldData(level, out int reqGold);
         _views[1].RenewalLevelText(level,maxLevel);
         _views[1].RenewalReqGoldText(reqGold);
@@ -447,10 +447,10 @@ public class UpgradeSelectPresenter : MonoBehaviour
     // 낚시대 레벨
     private void SetViewRodLevel()
     {
-        int level = DataTower.instance.rodLevel;
+        int level = DataTower.instance.fihserDatas.rodLevel;
         int maxLevel = _fDataReader.Rods.Length;
         _fUpgrade.CheckEnoughGoldRodLevelUpgrade(DataTower.instance.money);
-        _fUpgrade.CheckCanRodLevelUpgrade(DataTower.instance.fishingGrade, DataTower.instance.rodLevel);
+        _fUpgrade.CheckCanRodLevelUpgrade(DataTower.instance.fihserDatas.fishingGrade, DataTower.instance.fihserDatas.rodLevel);
         _fDataReader.GetRodLevelReqGoldData(level, out int reqGold);
         _views[2].RenewalLevelText(level,maxLevel);
         _views[2].RenewalReqGoldText(reqGold);
@@ -483,10 +483,10 @@ public class UpgradeSelectPresenter : MonoBehaviour
     // 배 레벨
     private void SetViewShipLevel()
     {
-        int level = DataTower.instance.shipLevel;
+        int level = DataTower.instance.fihserDatas.shipLevel;
         int maxLevel = _fDataReader.Ships.Length;
         _fUpgrade.CheckEnoughGoldShipLevelUpgrade(DataTower.instance.money);
-        _fUpgrade.CheckCanShipLevelUpgrade(DataTower.instance.fishingGrade, DataTower.instance.shipLevel);
+        _fUpgrade.CheckCanShipLevelUpgrade(DataTower.instance.fihserDatas.fishingGrade, DataTower.instance.fihserDatas.shipLevel);
         _fDataReader.GetShipLevelReqGoldData(level, out int reqGold);
         _views[3].RenewalLevelText(level,maxLevel);
         _views[3].RenewalReqGoldText(reqGold);

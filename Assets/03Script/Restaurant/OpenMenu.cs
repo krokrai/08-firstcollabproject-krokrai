@@ -36,6 +36,9 @@ public class OpenMenu : MonoBehaviour
         _loadCanvas.alpha = 0;
         _loadCanvas.interactable = false;
         _loadCanvas.blocksRaycasts = false;
+        _gaugeCanvas.alpha = 0;
+        _gaugeCanvas.interactable = false;
+        _gaugeCanvas.blocksRaycasts = false;
         //_menu.SetActive(false);
         _audioManager.PlayBgmFishhook();
         _restaurantScreen.SetActive(false);
@@ -50,6 +53,10 @@ public class OpenMenu : MonoBehaviour
         _fish.SetActive(false);
         _restaurantScreen.SetActive(true);
         OnChangeSceneToRestaurant?.Invoke(true);
+
+        _gaugeCanvas.alpha = 1;
+        _gaugeCanvas.interactable = true;
+        _gaugeCanvas.blocksRaycasts = true;
     }
 
     public void OpenMenuPanel()
@@ -62,18 +69,12 @@ public class OpenMenu : MonoBehaviour
             _loadCanvas.alpha = 1;
             _loadCanvas.interactable = true;
             _loadCanvas.blocksRaycasts = true;
-            _gaugeCanvas.alpha = 1;
-            _gaugeCanvas.interactable = true;
-            _gaugeCanvas.blocksRaycasts = true;
         }
         else
         {
             _loadCanvas.alpha = 0;
             _loadCanvas.interactable = false;
             _loadCanvas.blocksRaycasts = false;
-            _gaugeCanvas.alpha = 0;
-            _gaugeCanvas.interactable = false;
-            _gaugeCanvas.blocksRaycasts = false;
         }
         
         _masterBtn.interactable = !_active;

@@ -75,10 +75,10 @@ public class FishingManager : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             _upgradeManager.OnShipUpgrade += ShipUpgradeLevel;
 
             // 현재 저장된 레벨 데이터로 초기 설정
-            RodgradeMaxCount(DataTower.instance.rodLevel);
-            BaitgradeMaxCount(DataTower.instance.baitLevel);
-            FishRateLevel(DataTower.instance.fishingGrade);
-            ShipUpgradeLevel(DataTower.instance.fishingGrade);
+            RodgradeMaxCount(DataTower.instance.fihserDatas.rodLevel);
+            BaitgradeMaxCount(DataTower.instance.fihserDatas.baitLevel);
+            FishRateLevel(DataTower.instance.fihserDatas.fishingGrade);
+            ShipUpgradeLevel(DataTower.instance.fihserDatas.fishingGrade);
         }
 
         _currentCount = fishingCount;

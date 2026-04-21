@@ -68,12 +68,25 @@ public class RecipManager : MonoBehaviour
             _rcps = _dataCon.objs[i] as RecipeContainer;
             obj = Instantiate(tempRecipeObj, transform.position, Quaternion.identity);
             obj.transform.SetParent(_scrollViewContent.transform, false);
+            obj.transform.SetSiblingIndex(_dataCon.objs.Length * 3 + i);
             obj.GetComponent<RecipModel>().InitRecip(_rcps, _riu);
             obj.name = _rcps.name;
 
             _recipes.Add(_rcps.ingredient, obj);
         }
         yield break;
+    }
+
+    int num;
+
+    public void SetSiblingIndex(RecipeContainer rcp, int multi)
+    {
+        num = 0;
+        int.TryParse(rcp.recipe_ID.Split(' ')[1],out num);
+        Debug.Log(num);
+        num--;
+
+        _recipes[rcp.ingredient].transform.SetSiblingIndex(_dataCon.objs.Length * multi + num);
     }
 
     public void ReCall(RecipeContainer rcp)

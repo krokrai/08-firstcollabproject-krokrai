@@ -51,35 +51,6 @@ public class DataTower : MonoBehaviour
     public RestaurantDatas restaurantDatas;
 
     #region 낚시 변수
-    #region 구형 변수
-    /// <summary>
-    /// 플레이어 등급 낚시 관련 레벨에 대해서 해당 부분에서 예외 처리가 없으므로, UI 작업자가 예외처리 열심히 해주셔야합니다.
-    /// </summary>
-    public int fishingGrade;
-    /// <summary>
-    /// 미끼 레벨
-    /// </summary>
-    public int baitLevel;
-    /// <summary>
-    /// 낚시대 레벨
-    /// </summary>
-    public int rodLevel;
-    /// <summary>
-    /// shipLevel;
-    /// </summary>
-    public int shipLevel;
-
-    /// <summary>
-    /// 최대로 저장할 수 있는 미끼 수
-    /// </summary>
-    public int fishingCount;
-
-    /// <summary>
-    /// 현재 갖고 있는 미끼 수.
-    /// </summary>
-    public int currentFishingCount;
-
-    #endregion
 
     public FisherDatas fihserDatas;
     public CatchFishs catchedFishs;

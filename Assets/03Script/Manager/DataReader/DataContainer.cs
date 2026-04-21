@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Container", menuName = "DataReader/Container")]
 public class DataContainer : ScriptableObject
 {
+
     public URLReader reader;
     [Tooltip("데이터 테이블의 데이터 시작 위치 지정")][SerializeField] byte _mainLine = 4;
 
@@ -66,7 +67,7 @@ public class DataContainer : ScriptableObject
                 Debug.LogWarning($"{objs[i - mainLine].name}에 <color=red>IDataSeter</color>가 포함되어 있지 않습니다.");
             }
         }
-
+        
         isDataLoaded = true;
     }
 }

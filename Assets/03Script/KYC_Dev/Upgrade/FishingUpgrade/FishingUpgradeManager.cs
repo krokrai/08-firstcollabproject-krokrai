@@ -140,9 +140,9 @@ public class FishingUpgradeManager : MonoBehaviour
     {
         if (CanFishingGradeUp(DataTower.instance.money))
         {
-            DataTower.instance.fishingGrade++;
+            DataTower.instance.fihserDatas.fishingGrade++;
             DataTower.instance.TryMoenyChanged((ulong)_fishingGradeReqGold);
-            OnFishingUpgrade?.Invoke(DataTower.instance.fishingGrade);
+            OnFishingUpgrade?.Invoke(DataTower.instance.fihserDatas.fishingGrade);
             CheckCanUpgrades();
             CheckReqGolds();
         }
@@ -156,9 +156,9 @@ public class FishingUpgradeManager : MonoBehaviour
     {
         if (CanBaitLevelUp(DataTower.instance.money))
         {
-            DataTower.instance.baitLevel++;
+            DataTower.instance.fihserDatas.baitLevel++;
             DataTower.instance.TryMoenyChanged((ulong)_baitLevelReqGold);
-            OnBaitUpgrade?.Invoke(DataTower.instance.baitLevel);
+            OnBaitUpgrade?.Invoke(DataTower.instance.fihserDatas.baitLevel);
             CheckCanUpgrades();
             CheckReqGolds();
         }
@@ -172,9 +172,9 @@ public class FishingUpgradeManager : MonoBehaviour
     {
         if (CanRodLevelUp(DataTower.instance.money))
         {
-            DataTower.instance.rodLevel++;
+            DataTower.instance.fihserDatas.rodLevel++;
             DataTower.instance.TryMoenyChanged((ulong)_rodLevelReqGold);
-            OnRodUpgrade?.Invoke(DataTower.instance.rodLevel);
+            OnRodUpgrade?.Invoke(DataTower.instance.fihserDatas.rodLevel);
             CheckCanUpgrades();
             CheckReqGolds();
         }
@@ -188,9 +188,9 @@ public class FishingUpgradeManager : MonoBehaviour
     {
         if (CanShipLevelUp(DataTower.instance.money))
         {
-            DataTower.instance.shipLevel++;
+            DataTower.instance.fihserDatas.shipLevel++;
             DataTower.instance.TryMoenyChanged((ulong)_shipLevelReqGold);
-            OnShipUpgrade?.Invoke(DataTower.instance.shipLevel);
+            OnShipUpgrade?.Invoke(DataTower.instance.fihserDatas.shipLevel);
             CheckCanUpgrades();
             CheckReqGolds();
         }
@@ -203,7 +203,7 @@ public class FishingUpgradeManager : MonoBehaviour
 
     private bool CanFishingGradeUp(ulong curGold)
     {
-        bool chackLevel = _dataReader.Grades.Length > DataTower.instance.fishingGrade;
+        bool chackLevel = _dataReader.Grades.Length > DataTower.instance.fihserDatas.fishingGrade;
         bool chackGold = curGold >= (ulong)_fishingGradeReqGold;
         
         return chackGold && chackLevel;
@@ -222,9 +222,9 @@ public class FishingUpgradeManager : MonoBehaviour
     
     private bool CanBaitLevelUp(ulong curGold)
     {
-        bool chackLevel = _dataReader.Grades.Length > DataTower.instance.baitLevel;
+        bool chackLevel = _dataReader.Grades.Length > DataTower.instance.fihserDatas.baitLevel;
         bool chackGold = curGold >= (ulong)_baitLevelReqGold;
-        bool chackGrade = CheckCanBaitLevelUpgrade(DataTower.instance.fishingGrade,DataTower.instance.baitLevel);
+        bool chackGrade = CheckCanBaitLevelUpgrade(DataTower.instance.fihserDatas.fishingGrade,DataTower.instance.fihserDatas.baitLevel);
         
         
         return chackGold && chackLevel && chackGrade;
@@ -258,9 +258,9 @@ public class FishingUpgradeManager : MonoBehaviour
 
     private bool CanRodLevelUp(ulong curGold)
     {
-        bool chackLevel = _dataReader.Grades.Length > DataTower.instance.rodLevel;
+        bool chackLevel = _dataReader.Grades.Length > DataTower.instance.fihserDatas.rodLevel;
         bool chackGold = curGold >= (ulong)_rodLevelReqGold;
-        bool chackGrade = CheckCanRodLevelUpgrade(DataTower.instance.fishingGrade,DataTower.instance.rodLevel);
+        bool chackGrade = CheckCanRodLevelUpgrade(DataTower.instance.fihserDatas.fishingGrade,DataTower.instance.fihserDatas.rodLevel);
         
         return chackGold && chackLevel && chackGrade;
     }
@@ -293,9 +293,9 @@ public class FishingUpgradeManager : MonoBehaviour
 
     private bool CanShipLevelUp(ulong curGold)
     {
-        bool chackLevel = _dataReader.Grades.Length > DataTower.instance.shipLevel;
+        bool chackLevel = _dataReader.Grades.Length > DataTower.instance.fihserDatas.shipLevel;
         bool chackGold = curGold >= (ulong)_shipLevelReqGold;
-        bool chackGrade = CheckCanShipLevelUpgrade(DataTower.instance.fishingGrade,DataTower.instance.shipLevel);
+        bool chackGrade = CheckCanShipLevelUpgrade(DataTower.instance.fihserDatas.fishingGrade,DataTower.instance.fihserDatas.shipLevel);
         
         return chackGold && chackLevel && chackGrade;
     }
@@ -331,17 +331,17 @@ public class FishingUpgradeManager : MonoBehaviour
     /// </summary>
     public void CheckCanUpgrades()
     {
-        CheckCanBaitLevelUpgrade(DataTower.instance.fishingGrade,DataTower.instance.baitLevel);
-        CheckCanRodLevelUpgrade(DataTower.instance.fishingGrade, DataTower.instance.rodLevel);
-        CheckCanShipLevelUpgrade(DataTower.instance.fishingGrade, DataTower.instance.shipLevel);
+        CheckCanBaitLevelUpgrade(DataTower.instance.fihserDatas.fishingGrade,DataTower.instance.fihserDatas.baitLevel);
+        CheckCanRodLevelUpgrade(DataTower.instance.fihserDatas.fishingGrade, DataTower.instance.fihserDatas.rodLevel);
+        CheckCanShipLevelUpgrade(DataTower.instance.fihserDatas.fishingGrade, DataTower.instance.fihserDatas.shipLevel);
     }
     
     public void CheckReqGolds()
     {
-        _dataReader.GetFishingGradeReqGoldData(DataTower.instance.fishingGrade ,out _fishingGradeReqGold);
-        _dataReader.GetBaitLevelReqGoldData(DataTower.instance.baitLevel ,out _baitLevelReqGold);
-        _dataReader.GetRodLevelReqGoldData(DataTower.instance.rodLevel ,out _rodLevelReqGold);
-        _dataReader.GetShipLevelReqGoldData(DataTower.instance.shipLevel ,out _shipLevelReqGold);
+        _dataReader.GetFishingGradeReqGoldData(DataTower.instance.fihserDatas.fishingGrade ,out _fishingGradeReqGold);
+        _dataReader.GetBaitLevelReqGoldData(DataTower.instance.fihserDatas.baitLevel ,out _baitLevelReqGold);
+        _dataReader.GetRodLevelReqGoldData(DataTower.instance.fihserDatas.rodLevel ,out _rodLevelReqGold);
+        _dataReader.GetShipLevelReqGoldData(DataTower.instance.fihserDatas.shipLevel ,out _shipLevelReqGold);
         CheckEnoughGoldFishingGradeUpgrade(DataTower.instance.money);
         CheckEnoughGoldBaitLevelUpgrade(DataTower.instance.money);
         CheckEnoughGoldRodLevelUpgrade(DataTower.instance.money);

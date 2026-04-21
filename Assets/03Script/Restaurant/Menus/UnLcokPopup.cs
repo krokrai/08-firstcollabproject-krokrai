@@ -38,7 +38,7 @@ public class UnLcokPopup : MonoBehaviour
                 break;
         }
         
-        _currentLvl = DataTower.instance.UnlockMenuLevel - 1;
+        _currentLvl = DataTower.instance.upgradeDatas.UnlockMenuLevel - 1;
         if (DataTower.instance.money < (ulong)_datas[_currentLvl].MenuPanelUpgCost)
         {
             _texts[1].color = Color.red;
@@ -62,7 +62,7 @@ public class UnLcokPopup : MonoBehaviour
     public void confirmUnlock()
     {
         _audioManager.PlaySfxClick();
-        DataTower.instance.UnlockMenuLevel++;
+        DataTower.instance.upgradeDatas.UnlockMenuLevel++;
         _menuCtrl.UnlockedMenuPanel();
         _unlockPanel.SetActive(false);
     }

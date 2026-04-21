@@ -14,6 +14,7 @@ public class DataTower : MonoBehaviour
     #region 기본 변수
 
     [SerializeField] DataContainer _dataCon;
+
     /// <summary>
     /// 소지 금액 ulong으로 받아야함.
     /// </summary>
@@ -44,90 +45,13 @@ public class DataTower : MonoBehaviour
         return true;
     }
 
-    public int MasterLevel;
-
-    public int MaxCustomerLimitLevel;
-
-    public int MaxMenuLimitLevel;
-
-    public int MaxSpawnLimit01Level;
-
-    public int MaxSpawnLimit02Level;
-
-    public int WeightLevel;
-
-    public int BonusTipsMultiLevel;
-
-    public int BonusDishPrice01Level;
-
-    public int BonusDishPrice02Level;
-
-    public int BonusFood01Level;
-
-    public int BonusFood02Level;
-
-    public int UnlockGramophoneLevel;
-
-    public int UnlockCatObjectLevel;
-
-    public int UnlockMenuLevel;
-
-    //List<Temp_Item> Items; // Item SO 작업 후 추가 작업 예정 @@@@@@@@@@@@@@@@@@@@
-
-
+    public UpgradeDatas upgradeDatas;
     #endregion
 
-    #region 식당 변수
-
-    /// <summary>
-    /// 손님 방문 횟수 카운터용
-    /// </summary>
-    public ulong customerVisitCount { get; private set; }
-
-    /// <summary>
-    /// 일반 손님 방문 횟수.
-    /// </summary>
-    public uint normalCustomerVisitCount { get; private set; }
-
-    /// <summary>
-    /// 특별 손님 방문 횟수
-    /// </summary>
-    public uint SpecialCustomerVisitCount { get; private set; }
-
-    /// <summary>
-    /// 우대 손님 방문 횟수
-    /// </summary>
-    public uint VIPCustomerVisitCount { get; private set; }
-
-    #endregion
-
-    #region 개인 설정 변수
-
-    /// <summary>
-    /// 마스터 볼륨 조절용
-    /// </summary>
-    public float masterVolume; // 실제 표기는 0~100 정수 값. 실제 slider에 들어가는 값은 0~1의 실수 값.
-
-    /// <summary>
-    /// BGM 볼륨
-    /// </summary>
-    public float BGMVolume;
-
-    /// <summary>
-    /// SFX 볼륨
-    /// </summary>
-    public float SFXVolume;
-
-    /// <summary>
-    /// 투명도 조절 변수 0~100 값만 사용 예정
-    /// 투명도가 높을 수록 게임이 투명해지며, 최대치 일때 게임은 알파 값 30 유지.
-    /// </summary>
-    public byte transparentLevel;
-
-    #endregion
+    public RestaurantDatas restaurantDatas;
 
     #region 낚시 변수
-
+    #region 구형 변수
     /// <summary>
     /// 플레이어 등급 낚시 관련 레벨에 대해서 해당 부분에서 예외 처리가 없으므로, UI 작업자가 예외처리 열심히 해주셔야합니다.
     /// </summary>
@@ -155,51 +79,10 @@ public class DataTower : MonoBehaviour
     /// </summary>
     public int currentFishingCount;
 
-    /// <summary>
-    /// 현재까지 잡은 총 물고기 수
-    /// </summary>
-    public ulong catchFishs;
+    #endregion
 
-    /// <summary>
-    /// 희귀도가 쓰레기인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishTrash;
-
-    /// <summary>
-    /// 희귀도가 일반인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishNormal;
-
-    /// <summary>
-    /// 희귀도가 우수인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishFine;
-
-    /// <summary>
-    /// 희귀도가 고급인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishSuperior;
-
-    /// <summary>
-    /// 희귀도가 희귀인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishRare;
-
-    /// <summary>
-    /// 희귀도가 명품인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishElite;
-
-    /// <summary>
-    /// 희귀도가 환상인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishFantastic;
-
-    /// <summary>
-    /// 희귀도가 전설인 물고기를 잡은 횟수
-    /// </summary>
-    public ulong catchFishLegendary;
-
+    public FisherDatas fihserDatas;
+    public CatchFishs catchedFishs;
 
     /// <summary>
     /// 현재 미끼 충전 타이머.
@@ -222,10 +105,12 @@ public class DataTower : MonoBehaviour
     /// DataTower 싱글톤 패턴
     /// </summary>
     public static DataTower instance;
+
     /// <summary>
     /// 인벤토리용 리스트
     /// </summary>
     public List<FishData> Items = new List<FishData>();
+
     /// <summary>
     /// 인벤토리 슬롯 최댓값.
     /// </summary>
@@ -240,6 +125,8 @@ public class DataTower : MonoBehaviour
     public Dictionary<string, FishData> fishDatas;  // 물고기 고유번호, 물고기 저장방식(SO) 기입 후 사용 예정. 목적 : 데이터 검사용 예시 : 해당 물고기가 도감에 등록 되어 있는지
 
     public Language languageSetting { get; private set; } /// <summary> 현재 설정된 언어, 기본 값 : 영어 </summary>
+
+    public PersonalOptions pOptions;
 
     private void Awake()
     {
@@ -270,56 +157,15 @@ public class DataTower : MonoBehaviour
             if (ForcedInitialized)
                 Debug.Log("강제 초기화 실행");
 
-
             money = 1000;
 
             InventorySlotMax = 10;
 
-            customerVisitCount = 0;
-
-            masterVolume = 0.5f;
-            BGMVolume = 0.5f;
-            SFXVolume = 0.5f;
-
-            fishingGrade = 1;
-            baitLevel = 1;
-            rodLevel = 1;
-            shipLevel = 1;
-
-
-
-            MasterLevel = 1;
-
-            MaxCustomerLimitLevel = 1;
-
-            MaxMenuLimitLevel = 1;
-
-            MaxSpawnLimit01Level = 1;
-
-            MaxSpawnLimit02Level = 1;
-
-            WeightLevel = 1;
-
-            BonusTipsMultiLevel = 1;
-
-            BonusDishPrice01Level = 1;
-
-            BonusDishPrice02Level = 1;
-
-            BonusFood01Level = 1;
-
-            BonusFood02Level = 1;
-
-            UnlockGramophoneLevel = 1;
-
-            UnlockCatObjectLevel = 1;
-
-            UnlockMenuLevel = 1;
-
-            fishingCount = 1;
-            currentFishingCount = 1;
-
-
+            fihserDatas = new FisherDatas(1, 1, 1, 1, 1, 1);
+            catchedFishs = new CatchFishs(0, 0, 0, 0, 0, 0, 0, 0, 0);
+            pOptions = new PersonalOptions(0.5f, 0.5f, 0.5f, 100, Language.ENG);
+            restaurantDatas = new RestaurantDatas(0,0,0,0);
+            upgradeDatas = new UpgradeDatas(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
             fishingTime = 3600;
             maxFishingTime = 3600;
@@ -334,7 +180,7 @@ public class DataTower : MonoBehaviour
     {
         while (!_dataCon.isDataLoaded)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
         }
 
         if (_dataCon.objs[0] is not FishData)
@@ -372,22 +218,6 @@ public class DataTower : MonoBehaviour
         OnLanguageSettingChanged?.Invoke(languageSetting);
     }
 
-    // 돈
-    // 인벤토리, 생선
-    // 도감????
-    // 손님 방문 횟수. 잠수 중 지나간 손님 수
-    // 업그레이드, 어떤 걸 얼만큼 업그레이드 되어 있는 지.
-    // 초밥 수
-    // 언어 등 개인 설정
-    // 미끼 갯수
-    // 타이머
-
-
-
-    #region 식당 관련 함수들
-
-    #endregion
-
     #region 낚시 관련 함수들
     // 아마 So로 넘어올거 같다.
     /// <summary>
@@ -405,37 +235,36 @@ public class DataTower : MonoBehaviour
         }
         CatchFishCounter(in fish);
     }
-    #endregion
-
 
     void CatchFishCounter(in FishData fish)
     {
         switch (fish.fishRarity)
         {
             case EFish_Rarity.Trash:
-                catchFishTrash++;
+                catchedFishs.catchFishTrash++;
                 break;
             case EFish_Rarity.Normal:
-                catchFishNormal++;
+                catchedFishs.catchFishNormal++;
                 break;
             case EFish_Rarity.Fine:
-                catchFishFine++;
+                catchedFishs.catchFishFine++;
                 break;
             case EFish_Rarity.Superior:
-                catchFishSuperior++;
+                catchedFishs.catchFishSuperior++;
                 break;
             case EFish_Rarity.Rare:
-                catchFishRare++;
+                catchedFishs.catchFishRare++;
                 break;
             case EFish_Rarity.Elite:
-                catchFishElite++;
+                catchedFishs.catchFishElite++;
                 break;
             case EFish_Rarity.Fantastic:
-                catchFishFantastic++;
+                catchedFishs.catchFishFantastic++;
                 break;
             case EFish_Rarity.Legendary:
-                catchFishLegendary++;
+                catchedFishs.catchFishLegendary++;
                 break;
         }
     }
+    #endregion
 }

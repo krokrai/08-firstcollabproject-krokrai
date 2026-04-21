@@ -28,7 +28,6 @@ public class UnlockedPopup : MonoBehaviour
     IEnumerator Waiter()
     {
         yield return new WaitForSecondsRealtime(0.2f);
-        Debug.Log(_reader);
         gameObject.SetActive(false);
         yield break;
     }

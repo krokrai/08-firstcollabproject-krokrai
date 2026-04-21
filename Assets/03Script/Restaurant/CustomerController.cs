@@ -66,6 +66,9 @@ public class CustomerController : MonoBehaviour
                     _sr.sortingOrder = -1;
                     _anim.Play("Sit");
                     break;
+                case CustomerState.NA:
+                default:
+                    break;
             }
         }
         else

@@ -17,6 +17,7 @@ public class RecipeInfoUI : MonoBehaviour
     [SerializeField] UnlockedPopup _unlockedPopupScript;
     [SerializeField] AudioManager _audioManager;
     [SerializeField] RecipManager _recipeManager;
+    [SerializeField] GameObject _body;
 
     RecipeContainer _rcp;
 
@@ -46,8 +47,8 @@ public class RecipeInfoUI : MonoBehaviour
     /// </summary>
     public void SelectedRecipe(in RecipeContainer rcp, in GameObject outline  ,in bool canMake, in bool isUnlock, in bool canUnlock)
     {
-        if (!gameObject.activeSelf)
-            gameObject.SetActive(true);
+        if (!_body.activeSelf)
+            _body.SetActive(true);
         if (rcp == null)
             return;
         _currentObj?.SetActive(false);
@@ -64,10 +65,8 @@ public class RecipeInfoUI : MonoBehaviour
 
         _tmpUGUI[0].text = lng == Language.KOR ? _rcp.recipe_KName : _rcp.recipe_EName;
 
-        // 이미지 로딩 필요.
-
         _tmpUGUI[1].text = (rcp.prices
-                * (1 + DataTower.instance.BonusDishPrice01Level + DataTower.instance.BonusDishPrice02Level))
+                * (1 + DataTower.instance.upgradeDatas.BonusDishPrice01Level + DataTower.instance.upgradeDatas.BonusDishPrice02Level))
                 .TextFormatCurrency();
         _tmpUGUI[2].text = rcp.yield.ToString();
 
@@ -117,7 +116,7 @@ public class RecipeInfoUI : MonoBehaviour
                 _currentHasFish++;
         }
 
-        if (_currentHasFish <= 0)
+        if (_currentHasFish < 1)
         {
             _tmpUGUI[5].text = $"<color=red>{_currentHasFish} / 1</color>";
         }

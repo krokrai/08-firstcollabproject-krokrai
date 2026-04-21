@@ -13,5 +13,6 @@ public static class Define
         MoveToSeat,
         Eat,
         Exit,
+        NA = -999
     }
 }

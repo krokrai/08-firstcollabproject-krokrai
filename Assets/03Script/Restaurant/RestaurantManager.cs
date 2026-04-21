@@ -114,7 +114,7 @@ public class RestaurantManager : MonoBehaviour
 
         for (i = 0; i < 10 ; i++)
         {
-            GameObject obj = Instantiate(_customerPrefab); // 나중에 데이터 타워 리셋 후 받게 만들기.
+            GameObject obj = Instantiate(_customerPrefab);
             obj.GetComponent<CustomerController>().ConnectRestaurant(this, _openMenu, _audioManager);
             obj.transform.SetParent(_customers.transform);
             obj.name = $"customer {i}";
@@ -163,7 +163,7 @@ public class RestaurantManager : MonoBehaviour
 
     private IEnumerator CoTrySpawnCustomer()
     {
-        //yield return StartCoroutine(Waiter());
+        yield return StartCoroutine(Waiter());
 
         // 설거지? 시간 => 대기시간 => 스폰
         while (true)
@@ -210,10 +210,14 @@ public class RestaurantManager : MonoBehaviour
     {
         // 자리에 앉음 상태로 전환
         //_currentWeightLevel = DataTower.instance.WeightLevel;
-        _temp_Numbers = Random.Range(0, 20);//CustomerWeightSelecter(UnityEngine.Random.Range(0, 600)); //UnityEngine.Random.Range(0,
+        //_temp_Numbers = Random.Range(0, 20);//CustomerWeightSelecter(UnityEngine.Random.Range(0, 600)); //UnityEngine.Random.Range(0,
             /*(_maxNormalCustomersWeight
             + CanSpawnVIPCustomer()
             + CanSpawnSpecialCustomer() ) ));*/
+        _temp_Numbers = CustomerWeightSelecter(UnityEngine.Random.Range(0, 
+        (_maxNormalCustomersWeight
+        + CanSpawnVIPCustomer()
+        + CanSpawnSpecialCustomer() ) ));
 
         Debug.Log(_temp_Numbers);
 
@@ -234,7 +238,7 @@ public class RestaurantManager : MonoBehaviour
 
     private int CanSpawnSpecialCustomer()
     {
-        if (_currentSpawnedSpecialCustomer < DataTower.instance.MaxSpawnLimit01Level - 1)
+        if (_currentSpawnedSpecialCustomer < DataTower.instance.upgradeDatas.MaxSpawnLimit01Level - 1)
         {
             return _maxSpecialCustomersWeight + _specialCustomers * _diningUpgradeDataReader.Weight[_currentWeightLevel].Effect_Value_1;
         }
@@ -244,7 +248,7 @@ public class RestaurantManager : MonoBehaviour
 
     private int CanSpawnVIPCustomer()
     {
-        if (_currentSpawnedVIPCustomer < DataTower.instance.MaxSpawnLimit02Level - 1)
+        if (_currentSpawnedVIPCustomer < DataTower.instance.upgradeDatas.MaxSpawnLimit02Level - 1)
         {
             return _maxVIPCustomersWeight;
         }
@@ -278,7 +282,7 @@ public class RestaurantManager : MonoBehaviour
         {
             // 그 외 스페셜 및 vip
             weight -= _maxNormalCustomersWeight;
-            if (weight - _maxSpecialCustomersWeight < 0 && DataTower.instance.MaxSpawnLimit01Level > 1)
+            if (weight - _maxSpecialCustomersWeight < 0 && DataTower.instance.upgradeDatas.MaxSpawnLimit01Level > 1)
             {
                 // 스페셜만
                 Debug.Log($"Special Spawn, {weight}");
@@ -351,7 +355,7 @@ public class RestaurantManager : MonoBehaviour
 
     private RestaurantSeat GetEmptySeat()
     {
-        for (int i = 0; i < DataTower.instance.MaxCustomerLimitLevel; i++)
+        for (int i = 0; i < DataTower.instance.upgradeDatas.MaxCustomerLimitLevel; i++)
         {
             // 반복 문으로 모든 자리 탐색
             if (_seats[i].IsOccupied == false)
@@ -391,10 +395,10 @@ public class RestaurantManager : MonoBehaviour
             (ulong)(
             (_menuCtrl.RandomEating()
                 * (1 
-                    + _diningUpgradeDataReader.Bonus_Dish_Price_1[DataTower.instance.BonusDishPrice01Level].Effect_Value_1 // 호출 횟수가 많지 않아서 임시 작업, 성능 문제 발생 시 수정 필요.
-                    + _diningUpgradeDataReader.Bonus_Dish_Price_2[DataTower.instance.BonusDishPrice02Level].Effect_Value_2))
+                    + _diningUpgradeDataReader.Bonus_Dish_Price_1[DataTower.instance.upgradeDatas.BonusDishPrice01Level].Effect_Value_1 // 호출 횟수가 많지 않아서 임시 작업, 성능 문제 발생 시 수정 필요.
+                    + _diningUpgradeDataReader.Bonus_Dish_Price_2[DataTower.instance.upgradeDatas.BonusDishPrice02Level].Effect_Value_2))
                 * multi
-                * DataTower.instance.BonusTipsMultiLevel
+                * DataTower.instance.upgradeDatas.BonusTipsMultiLevel
             ),
             false);
     }

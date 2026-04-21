@@ -46,34 +46,6 @@ public class DataTower : MonoBehaviour
     }
 
     public UpgradeDatas upgradeDatas;
-
-    public int MasterLevel;
-
-    public int MaxCustomerLimitLevel;
-
-    public int MaxMenuLimitLevel;
-
-    public int MaxSpawnLimit01Level;
-
-    public int MaxSpawnLimit02Level;
-
-    public int WeightLevel;
-
-    public int BonusTipsMultiLevel;
-
-    public int BonusDishPrice01Level;
-
-    public int BonusDishPrice02Level;
-
-    public int BonusFood01Level;
-
-    public int BonusFood02Level;
-
-    public int UnlockGramophoneLevel;
-
-    public int UnlockCatObjectLevel;
-
-    public int UnlockMenuLevel;
     #endregion
 
     public RestaurantDatas restaurantDatas;

@@ -88,6 +88,8 @@ public class RestaurantManager : MonoBehaviour
         _haveDish = b;
     }
 
+    public bool hasDish() => _haveDish;
+
     private void Start()
     {
         _haveDish = false;

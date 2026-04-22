@@ -154,6 +154,8 @@ public class CustomerController : MonoBehaviour
                     // 식사 대기시간.
                     for (byte i = 0; i < _maxEatCount; i++)
                     {
+                        if (!_restaurant.hasDish())
+                            break;
                         if (_data.orderChans[i] <= 0.001 || _data.orderChans[i] == -1)
                         {
                             break;
@@ -162,7 +164,6 @@ public class CustomerController : MonoBehaviour
                         {
                             _firstOrder = false;
                             _eatCounte++;
-                            yield return StartCoroutine(Gaugebar(false, i));
                             _audioManager.PlaySfxPayMoney();
                             if (UnityEngine.Random.Range(0,1f) <= _tips.tipsRate) //팁 확률 측정 후 팁인 경우 팁과함께 아닌 경우 팁 제외
                                 _restaurant.TryCounsumeSushiAndEarnMoney(_tips.tipsMulti);
@@ -170,6 +171,7 @@ public class CustomerController : MonoBehaviour
                                 _restaurant.TryCounsumeSushiAndEarnMoney(1);
                             yield return StartCoroutine(Gaugebar(true,i));
                             _audioManager.PlaySfxPayMoney();
+                            yield return StartCoroutine(Gaugebar(false, i));
                         }
                     }
 

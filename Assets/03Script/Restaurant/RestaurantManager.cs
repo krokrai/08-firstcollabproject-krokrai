@@ -66,11 +66,6 @@ public class RestaurantManager : MonoBehaviour
             _gaugeSetter[i].GaugeOff();
         }
     }
-    private void OnEnable()
-    {
-        _menuCtrl.OnDish += HaveDish;
-        _openMenu.OnChangeSceneToRestaurant += OnVisual;
-    }
 
     private void OnDestroy()
     {
@@ -92,6 +87,9 @@ public class RestaurantManager : MonoBehaviour
 
     private void Start()
     {
+        _menuCtrl.OnDish += HaveDish;
+        _openMenu.OnChangeSceneToRestaurant += OnVisual;
+
         _haveDish = false;
         byte i = 0;
         _halfNormalCustomersWeight = 0;

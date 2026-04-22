@@ -26,12 +26,8 @@ public class GaugeSetter : MonoBehaviour
         switch (grade)
         {
             case CustomerGrade.NORMAL:
-                Debug.Log(_tmp.color);
                 _tmp.text = "Normal";
-                Debug.Log(_tmp.color);
-                Debug.Log(_normalCustomerTextColor);
                 _tmp.color = _normalCustomerTextColor;
-                Debug.Log(_tmp.color);
                 break;
             case CustomerGrade.SPECIAL:
                 _tmp.text = "Special";

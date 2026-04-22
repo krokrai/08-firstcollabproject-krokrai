@@ -65,12 +65,13 @@ public class MenuCtrl : MonoBehaviour
 
     public int RandomEating()
     {
-        if ( _inDishUList.Count == 0)
+        if ( InsertedDish == 0)
         {
             OnDish?.Invoke(false);
             return 0;
         }
-        return _inDishUList[UnityEngine.Random.Range(0, _inDishUList.Count)].EatMenu();
+
+        return _inDishUList[UnityEngine.Random.Range(0, InsertedDish)].EatMenu();
     }
 
     /// <summary>
@@ -80,6 +81,8 @@ public class MenuCtrl : MonoBehaviour
     public void ReturnDish(in DishUI dish)
     {
         InsertedDish--;
+        if (InsertedDish == 0)
+            OnDish?.Invoke(false);
         _inDishUList.Remove(dish);
         dish.SetSiblingList(maxDsih - 1);
     }

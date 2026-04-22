@@ -71,7 +71,10 @@ public class DishUI : MonoBehaviour
         _tmpUGUI[1].text = _sushi.ToString();
 
         if (_sushi <= 0)
+        {
             DeletMenu();
+            return 0;
+        }
         return _rcp.prices;
     }
 

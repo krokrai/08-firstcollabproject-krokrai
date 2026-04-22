@@ -392,9 +392,12 @@ public class RestaurantManager : MonoBehaviour
     /// <returns></returns>
     public void TryCounsumeSushiAndEarnMoney(float multi)
     {// 기본 가격 = RandomEating // 현재 비용 높으니 후에 Action으로 전환 조치 필요.
+        int eating = _menuCtrl.RandomEating();
+        if (eating == 0)
+            return;
         DataTower.instance.TryMoenyChanged(
             (ulong)(
-            (_menuCtrl.RandomEating()
+            (eating
                 * (1 
                     + _diningUpgradeDataReader.Bonus_Dish_Price_1[DataTower.instance.upgradeDatas.BonusDishPrice01Level].Effect_Value_1 // 호출 횟수가 많지 않아서 임시 작업, 성능 문제 발생 시 수정 필요.
                     + _diningUpgradeDataReader.Bonus_Dish_Price_2[DataTower.instance.upgradeDatas.BonusDishPrice02Level].Effect_Value_2))

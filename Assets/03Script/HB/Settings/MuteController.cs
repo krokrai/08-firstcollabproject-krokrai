@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class MuteController : MonoBehaviour
 {
@@ -11,8 +12,10 @@ public class MuteController : MonoBehaviour
 
         // 체크됨(Mute) -> 볼륨 0
         // 체크해제(Sound On) -> 볼륨 100
-        float targetVolume = isMuted ? 0f : 100f;
-        
-        audioManager.SetMainVolume(targetVolume);
+        //float targetVolume = isMuted ? 0f : 100;
+
+        audioManager.SetMute(isMuted);
+
+        //audioManager.SetMainVolume(targetVolume);
     }
 }

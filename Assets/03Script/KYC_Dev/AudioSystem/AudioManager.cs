@@ -38,6 +38,12 @@ public class AudioManager : MonoBehaviour
         _catPlayIndex = 1;
     }
 
+    public void SetMute(bool isMute)
+    {
+        _bgmSource.mute = isMute;
+        _sfxSource.mute = isMute;
+    }
+
     #region 기본 메서드
 
     /// <summary>
@@ -176,9 +182,9 @@ public class AudioManager : MonoBehaviour
     {
         if(volume > 100) volume = 100;
         else if (volume < 0) volume = 0;
-        
+
         float temp = volume / 100f;
-        
+
         if (temp <= 0.001f)
         {
             _mixer.SetFloat("Master", -80f);

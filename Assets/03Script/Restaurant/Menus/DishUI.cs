@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class DishUI : MonoBehaviour
 {
-    [SerializeField] Image[] _img; // 1 : 메뉴 사진, 2 : 남은 수량
+    [SerializeField] AddressableImageLoader _imgLoader;
     [SerializeField] TextMeshProUGUI[] _tmpUGUI; // 1 : 메뉴 이름, 2 : 남은 수량
     [SerializeField] GameObject[] _lockUnits;
     [SerializeField] DisposeFood _SecondPopup;
@@ -40,6 +40,8 @@ public class DishUI : MonoBehaviour
         _lockUnits[1].SetActive(true);
         _sushi = _rcp.yield + (DataTower.instance.upgradeDatas.BonusFood01Level + DataTower.instance.upgradeDatas.BonusFood02Level - 2);
 
+
+        _imgLoader.SetImage(_rcp.dish_Sprite);
         _tmpUGUI[0].text = _rcp.recipe_KName; // 로컬라이제이션 진행 때 수정 해야됌 @@@@@@@@@@@@@@@@
         _tmpUGUI[1].text = _sushi.ToString();
     }

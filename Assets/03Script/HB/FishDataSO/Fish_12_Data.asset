@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6193ddd4a48b4954c9ff9fb053c28b3f, type: 3}
   m_Name: Fish_12_Data
   m_EditorClassIdentifier: Assembly-CSharp::FishData
-  isCaught: 0
+  isCaught: 1
   fishID: Fish_12
   korName: "\uCCAD\uB7C9 \uACE0\uB4F1\uC5B4"
   engName: Skyblue Macherel

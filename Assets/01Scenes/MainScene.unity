@@ -552,6 +552,7 @@ Transform:
   m_Children:
   - {fileID: 1903145808}
   - {fileID: 1194680562}
+  - {fileID: 651859716}
   - {fileID: 539359918}
   - {fileID: 772876310}
   m_Father: {fileID: 576575302}
@@ -7208,7 +7209,7 @@ SpriteRenderer:
   m_SortingLayerID: 2003375653
   m_SortingLayer: 1
   m_SortingOrder: -5
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_Sprite: {fileID: 534643643677631108, guid: cdb05cbc03e2228428dc45118612481e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9657,12 +9658,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651859715}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.15, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.31999993, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 958429248}
+  m_Father: {fileID: 26843758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!331 &651859717
 SpriteMask:
@@ -9719,7 +9720,7 @@ SpriteMask:
   m_FrontSortingLayer: 1
   m_BackSortingLayer: 1
   m_FrontSortingOrder: -1
-  m_BackSortingOrder: -3
+  m_BackSortingOrder: -6
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
   m_MaskSource: 0
@@ -11969,7 +11970,7 @@ SpriteRenderer:
   m_SortingLayerID: 2003375653
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_Sprite: {fileID: 21300000, guid: bf0bc091c345bee4ca93b518b359c171, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -16082,7 +16083,6 @@ Transform:
   - {fileID: 423834159}
   - {fileID: 1575403041}
   - {fileID: 1676203865}
-  - {fileID: 651859716}
   m_Father: {fileID: 576575302}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &958429249

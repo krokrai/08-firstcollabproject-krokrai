@@ -393,15 +393,19 @@ public class RestaurantManager : MonoBehaviour
         int eating = _menuCtrl.RandomEating();
         if (eating == 0)
             return;
-        DataTower.instance.TryMoenyChanged(
-            (ulong)(
-            (eating
-                * (1 
-                    + _diningUpgradeDataReader.Bonus_Dish_Price_1[DataTower.instance.upgradeDatas.BonusDishPrice01Level].Effect_Value_1 // 호출 횟수가 많지 않아서 임시 작업, 성능 문제 발생 시 수정 필요.
-                    + _diningUpgradeDataReader.Bonus_Dish_Price_2[DataTower.instance.upgradeDatas.BonusDishPrice02Level].Effect_Value_2))
+
+        ulong s = (ulong)(eating
+                * (1
+                    + _diningUpgradeDataReader.Bonus_Dish_Price_1[DataTower.instance.upgradeDatas.BonusDishPrice01Level - 1].Effect_Value_2
+                    + _diningUpgradeDataReader.Bonus_Dish_Price_2[DataTower.instance.upgradeDatas.BonusDishPrice02Level - 1].Effect_Value_2)
                 * multi
-                * DataTower.instance.upgradeDatas.BonusTipsMultiLevel
-            ),
+                * _diningUpgradeDataReader.Bonus_Tips_Multi[DataTower.instance.upgradeDatas.BonusTipsMultiLevel - 1].Effect_Value_2);
+
+        Debug.Log(s);
+        Debug.Log(eating);
+
+        DataTower.instance.TryMoenyChanged(
+            s,
             false);
     }
 }

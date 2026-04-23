@@ -18,6 +18,7 @@ public class RecipeInfoUI : MonoBehaviour
     [SerializeField] AudioManager _audioManager;
     [SerializeField] RecipManager _recipeManager;
     [SerializeField] GameObject _body;
+    [SerializeField] DiningUpgradeDataReader _upgData;
 
     RecipeContainer _rcp;
 
@@ -65,9 +66,12 @@ public class RecipeInfoUI : MonoBehaviour
 
         _tmpUGUI[0].text = lng == Language.KOR ? _rcp.recipe_KName : _rcp.recipe_EName;
 
-        _tmpUGUI[1].text = (rcp.prices
-                * (1 + DataTower.instance.upgradeDatas.BonusDishPrice01Level + DataTower.instance.upgradeDatas.BonusDishPrice02Level))
-                .TextFormatCurrency();
+        int a = (int)(rcp.prices
+                * (1
+                + _upgData.Bonus_Dish_Price_1[DataTower.instance.upgradeDatas.BonusDishPrice01Level - 1].Effect_Value_2
+                + _upgData.Bonus_Dish_Price_2[DataTower.instance.upgradeDatas.BonusDishPrice02Level - 1].Effect_Value_2));
+
+        _tmpUGUI[1].text = a.TextFormatCurrency();
         _tmpUGUI[2].text = rcp.yield.ToString();
 
         if (DataTower.instance.fishDatas.ContainsKey(rcp.ingredient))

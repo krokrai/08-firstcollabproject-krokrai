@@ -8637,6 +8637,7 @@ MonoBehaviour:
   _audioManager: {fileID: 904263605}
   _recipeManager: {fileID: 1427008582}
   _body: {fileID: 1819152679}
+  _upgData: {fileID: 2082954565}
 --- !u!114 &595351283
 MonoBehaviour:
   m_ObjectHideFlags: 0

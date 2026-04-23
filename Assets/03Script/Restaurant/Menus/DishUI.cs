@@ -77,6 +77,7 @@ public class DishUI : MonoBehaviour
             DeletMenu();
             return 0;
         }
+
         return _rcp.prices;
     }
 

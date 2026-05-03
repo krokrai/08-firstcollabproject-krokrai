@@ -153,8 +153,6 @@ public class RestaurantManager : MonoBehaviour
             }
         }
 
-        Debug.Log($"손님 수 : {_normalCustomers} / {_specialCustomers}");
-
         for (byte i = 0; i < _normalCustomers / 2; i++)
             _halfNormalCustomersWeight += _customerData[i].weight;
         for (byte i = 0; i < _specialCustomers / 2; i++)

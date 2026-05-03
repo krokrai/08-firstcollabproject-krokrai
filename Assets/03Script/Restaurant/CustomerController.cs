@@ -31,7 +31,7 @@ public class CustomerController : MonoBehaviour
     bool _firstOrder;
     bool _isVisualContect;
 
-    private float a;
+    private float _customerVelocity;
 
     private CustomerState _state;
 
@@ -112,7 +112,7 @@ public class CustomerController : MonoBehaviour
         _gaugeSetter.SetCustomerGrade(_data.grade);
         _eatCounte = 0;
 
-        a = _data.flow_Velocity;
+        _customerVelocity = _data.flow_Velocity;
 
         _isVisualContect = canVisual;
         SetVisual(_isVisualContect);
@@ -154,12 +154,8 @@ public class CustomerController : MonoBehaviour
                     // 식사 대기시간.
                     for (byte i = 0; i < _maxEatCount; i++)
                     {
-                        if (!_restaurant.hasDish())
+                        if (!_restaurant.hasDish() || _data.orderChans[i] < 0)
                             break;
-                        if (_data.orderChans[i] <= 0.001 || _data.orderChans[i] == -1)
-                        {
-                            break;
-                        }
                         else if (_firstOrder || Random.Range(0, 1f) <= _data.orderChans[_eatCounte])
                         {
                             _firstOrder = false;
@@ -201,23 +197,23 @@ public class CustomerController : MonoBehaviour
     IEnumerator Gaugebar(bool isEatDuration, byte num)
     {
         _gaugeSetter.SetState(isEatDuration, _isVisualContect);
-        
+        float sliderSpeed = 0;
         switch(isEatDuration)
         {
             case true:
-                while (a <= _data.eatDuration[num])
+                while (sliderSpeed <= _data.eatDuration[num])
                 {
                     yield return _GaugeUpdateTime;
-                    a = a + 0.25f + Time.deltaTime;
-                    _gaugeSetter.SliderValueUpdate(a / _data.eatDuration[num]);
+                    sliderSpeed = sliderSpeed + 0.25f + Time.deltaTime;
+                    _gaugeSetter.SliderValueUpdate(sliderSpeed / _data.eatDuration[num]);
                 }
                 break;
             case false:
-                while (a <= _data.orderTime[num])
+                while (sliderSpeed <= _data.orderTime[num])
                 {
                     yield return _GaugeUpdateTime;
-                    a = a + 0.25f + Time.deltaTime;
-                    _gaugeSetter.SliderValueUpdate(a / _data.orderTime[num]);
+                    sliderSpeed = sliderSpeed + 0.25f + Time.deltaTime;
+                    _gaugeSetter.SliderValueUpdate(sliderSpeed / _data.orderTime[num]);
                 }
                 break;
         }
@@ -230,7 +226,7 @@ public class CustomerController : MonoBehaviour
         // 지정 좌석까지 이동하는 것을 구현.
         while ((transform.position - targetPos).sqrMagnitude > 0.01f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, a * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, _customerVelocity * Time.deltaTime);
             yield return null;
         }
         transform.position = targetPos;

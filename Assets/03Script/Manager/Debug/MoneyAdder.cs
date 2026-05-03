@@ -12,8 +12,8 @@ public class MoneyAdder : MonoBehaviour
         DataTower.instance.TryMoenyChanged(5000, false);
     }
 
-    public void Add10kMoney()
+    public void Add1mMoney()
     {
-        DataTower.instance.TryMoenyChanged(10000, false);
+        DataTower.instance.TryMoenyChanged(1000000, false);
     }
 }

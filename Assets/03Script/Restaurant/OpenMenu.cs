@@ -32,6 +32,7 @@ public class OpenMenu : MonoBehaviour
 
     public void OnFishScene()
     {
+        _cat.SetActive(false);
         _fish.SetActive(true);
         _loadCanvas.alpha = 0;
         _loadCanvas.interactable = false;
@@ -47,7 +48,7 @@ public class OpenMenu : MonoBehaviour
 
     public void OnRestaurantScene()
     {
-        if (DataTower.instance.upgradeDatas.UnlockCatObjectLevel > 1)
+        if (1 < DataTower.instance.upgradeDatas.UnlockCatObjectLevel)
             _cat.SetActive(true); // 구조를 바꿀 수 없었어...
         _audioManager.PlayBgmRestaurant();
         _fish.SetActive(false);
